@@ -19,7 +19,7 @@ public class ExampleManager
             Console.WriteLine("4. Delete");
             Console.WriteLine("5. ");
             Console.WriteLine("6. ");
-            Console.WriteLine("7. Search");
+            Console.WriteLine("7. ");
             Console.WriteLine("0. Exit");
             Console.Write("Tanlang: ");
             int Select = Convert.ToInt32(Console.ReadLine());
