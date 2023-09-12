@@ -1,4 +1,4 @@
-﻿using Example.Application.Manager;
+﻿using ExampleProject.Prezentation;
 
 namespace ExampleProject
 {
@@ -6,7 +6,7 @@ namespace ExampleProject
     {
         static void Main(string[] args)
         {
-            ExampleManager.Run();
+            Manager.Run();
         }
     }
 }
