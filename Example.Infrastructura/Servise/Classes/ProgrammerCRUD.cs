@@ -59,7 +59,7 @@ public class ProgrammerCRUD : IProgrammerCRUD
 
         foreach (var p in plist)
         {
-            Console.WriteLine("Programmer : "+p.Name+"    Level : "+p.Level);
+            Console.WriteLine("Id : "+p.Id+"  Programmer : "+p.Name+"    Level : "+p.Level);
             Console.Write("Apps : ");
             int count = 0;
             foreach (var app in alist)
@@ -85,6 +85,43 @@ public class ProgrammerCRUD : IProgrammerCRUD
 
     public void Update(int id)
     {
-        throw new NotImplementedException();
+        if (_dbContext.Programmers.Where(x => x.Id == id).Any())
+        {
+            Programmer programmer = GetById(id);
+            Console.Write("Enter Name : ");
+            programmer.Name = Console.ReadLine();
+            Console.Write("Enter level (Junior,Middle,Senior) : ");
+            programmer.Level = Console.ReadLine();
+
+            /*Console.Write("How many apps does the developer have? : ");
+
+            //_dbContext.Programmers.Add(programmer);
+            
+            //List<Programmer> programmerlist = _dbContext.Programmers.ToList();
+            int count = Convert.ToInt32(Console.ReadLine());
+            //ICollection<App> appList = new List<App>();
+            for (int i = 0; i < count; i++)
+            {
+                App app = new App();
+                Console.Write(i + 1 + "-dastur nomini kiriting : ");
+                app.Name = Console.ReadLine();
+                Console.Write(app.Name + " dasturi tasnifi : ");
+                app.Description = Console.ReadLine();
+                app.ProgrammerId = _dbContext.Programmers.Where(p => p.Name.Equals(programmer.Name))
+                    .Select(p => p.Id).FirstOrDefault();
+                //_dbContext.Apps.Add(app);
+            }*/
+            _dbContext.SaveChanges();
+            Console.WriteLine("Updated!!!");
+        }
+        else Console.WriteLine("topilmadi");
     }
+
+
+    public App GetAppById(int id)
+    {
+        return _dbContext.Apps.FirstOrDefault(x => x.Id == id);
+    }
+
+   
 }
